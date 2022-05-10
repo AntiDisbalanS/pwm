@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-	//Company: 			PLANAR JSK
+	//Company: 		PLANAR JSK
 	//Engineer: 		Mordashou Anatol
 	//Create Date: 		15/04/2022 
 	//Design Name: 		Pulse-Width Modulation
@@ -11,30 +11,30 @@
 	//Revision: 		v3 
 
 
-module pwm #(																																	//	|ForExample
-	parameter 	CLK_Q 	= 3, 								//Quantity of frequencies for sel														|= 3
-				WIDTH_Q	= 8, 								//Quantity of pulse width for sel														|= 8
-				CLK_S	= 3'b0,
-				WIDTH_S	= 8'b0)(
-															//Remark: final frequency [MAX : MIX) = clk /2 /2^WIDTH_Q : clk /2 /2^CLK_Q /2^WIDTH_Q	|clk/512 :  clk/65_536
-	input									wr,
-	output									out,
-	input 		[CLK_Q + WIDTH_Q - 1 : 0]	code,			//MSB bit for high logic level in out 													|[10:0]
-	input 									clk, res);							
+module pwm #(													//	|ForExample
+	parameter 	CLK_Q 	= 3, 	//Quantity of frequencies for sel						|= 3
+			WIDTH_Q	= 8, 	//Quantity of pulse width for sel						|= 8
+			CLK_S	= 3'b0,
+			WIDTH_S	= 8'b0)(
+				//Remark: final frequency [MAX : MIX) = clk /2 /2^WIDTH_Q : clk /2 /2^CLK_Q /2^WIDTH_Q	|clk/512 :  clk/65_536
+	input						wr,
+	output						out,
+	input 	[CLK_Q + WIDTH_Q - 1 : 0]		code,			//MSB bit for high logic level in out 	|[10:0]
+	input 						clk, res);							
 
 	
-	reg			[CLK_Q - 1 : 0]				sel_clk;																							//	|[3:0]
-	reg			[WIDTH_Q - 1 : 0]			sel_width; 																							//	|[7:0]
-	reg			[2 ** CLK_Q - 1 : 0]		count_1; 		//Width 2^CLK_Q
-	reg										fclk; 
-	reg			[WIDTH_Q - 1 : 0]			count_2;																							//	|[7:0]
-	reg										out_;			//Buffer
+	reg	[CLK_Q - 1 : 0]				sel_clk;																							//	|[3:0]
+	reg	[WIDTH_Q - 1 : 0]			sel_width; 																							//	|[7:0]
+	reg	[2 ** CLK_Q - 1 : 0]			count_1; 		//Width 2^CLK_Q
+	reg						fclk; 
+	reg	[WIDTH_Q - 1 : 0]			count_2;																							//	|[7:0]
+	reg						out_;			//Buffer
 
 					
 				
 	assign out = out_ || &{sel_clk, sel_width}; //out or high
 	
-	always @(negedge wr or negedge res) //write reg
+	always @(negedge wr or negedge res) //write reg for VME or USB
 	
 		if(!res) begin sel_clk <= CLK_S; sel_width <= WIDTH_S; end //starting values
 		else begin
@@ -63,8 +63,7 @@ module pwm #(																																	//	|ForExample
 			count_2 <= count_2 + 1'b1;				//Second counter for divide fclk
 			out_ <= (count_2 < sel_width);	//Comparator for duty cycle | 01 - max duty cycle, FF - min duty cycle. 															 
 										
-		end
-
+		end	
 	
 endmodule
 
