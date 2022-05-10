@@ -16,13 +16,13 @@ Example:
 If WIDTH_Q = 0, CLK_Q = 3 and clk = 1MHz 
 	
 	cod 	out (ms)				cod		
-	X00		logic 0					XFF   1111111011111110
-	0XX		0,5						  X80		1111000011110000
-	1XX		1					    	X01		0000000100000001
-	2XX		2
-	3XX		4
-	4XX		8
-	5XX		16
+	X00	logic 0					XFF  	1111111011111110
+	0XX	0,5					X80	1111000011110000
+	1XX	1					X01	0000000100000001
+	2XX	2
+	3XX	4
+	4XX	8
+	5XX	16
 	6XX 	32
 	7XX 	64
 	7FF 	logic 1
