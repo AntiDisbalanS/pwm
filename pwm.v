@@ -66,7 +66,7 @@ module pwm #(
         if (!rst_n) begin
             width_count   <= {B_WIDTH{1'b0}};
             sel_width_buf <= {B_WIDTH{1'b0}};
-			pwm           <= |PWM_POL;
+	    pwm           <= |PWM_POL;
         end else begin
             if (clk_en) //counter 2 for width modulation
                 if (s_rst) 
@@ -74,8 +74,8 @@ module pwm #(
                 else 
                     width_count <= width_count + 1'b1;
 
-			if (~|width_count) //delay cycle 
-				sel_width_buf <= sel_width; 
+	    if (~|width_count) //delay cycle 
+		sel_width_buf <= sel_width; 
 
             if (clk_en) 
                 if (s_rst) 
