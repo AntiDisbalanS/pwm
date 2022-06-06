@@ -21,7 +21,7 @@
 */
 
 module pwm #(
-    parameter B_WIDTH = 4, //number of pulse width bits  for sel
+    parameter B_WIDTH = 8, //number of pulse width bits  for sel
               B_CLK   = 4, //number of frequency bits to select
               PWM_POL = 1)( //polarity  
     output reg                pwm,
