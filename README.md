@@ -1,15 +1,15 @@
 # pwm
-Parameters: CLK_Q - Quantity of frequencies for sel													
-				    WIDTH_Q	- Quantity of pulse width for sel	
-            CLK_S and WIDTH_S	- starting values
+Parameters: B_WIDTH - number of pulse width bits  for sel													
+	    B_CLK - number of frequency bits to select	
+            PWM_POL - polarity, for control leds =1 (off);
             
 Remark: final frequency [MAX : MIX) = clk /2 /2^WIDTH_Q : clk /2 /2^CLK_Q /2^WIDTH_Q	
 for this project [clk/512 :  clk/65_536]
            
-Reg:        count_1 - First counter for divide clk
-            fclk - Buffer after first divide
-            count_2 - Second counter for divide fclk
-            out_ - Comparator for duty cycle | 01 - max duty cycle, FF - min duty cycle. 
+Reg:        clk_count - First counter for divide clk
+            clk_en_buf - Buffer for create strob
+            width_count - Second counter for divide fclk
+            pwm - Comparator for duty cycle | 01 - min duty cycle, FF - max duty cycle (if def parameters) 
             
 Example:
             
@@ -27,4 +27,4 @@ If WIDTH_Q = 0, CLK_Q = 3 and clk = 1MHz
 	7XX 	64
 	7FF 	logic 1
   
-  In v3 replase sel_high reg to &cod. Add start parameters. 
+  In v4 more synchronize and error protection 
