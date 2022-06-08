@@ -1,14 +1,11 @@
 # pwm
 Parameters: B_WIDTH - number of pulse width bits  for sel													
 	    B_CLK - number of frequency bits to select	
-            PWM_POL - polarity, for control leds =1 (off);
-            
-Remark: final frequency [MAX : MIX) = clk /2 /2^WIDTH_Q : clk /2 /2^CLK_Q /2^WIDTH_Q	
-for this project [clk/512 :  clk/65_536]
+            PWM_POL - polarity, for control leds =1 (off)
             
 Example:
             
-If WIDTH_Q = 8, CLK_Q = 3 and clk = 1MHz 
+If B_WIDTH = 8, B_CLK = 3, PWM_POL = 0 and clk = 1MHz 
 	
 	cod 	out (ms)				cod		
                                 			XFF  	1111111011111110
