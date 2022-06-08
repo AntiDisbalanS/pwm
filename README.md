@@ -1,6 +1,6 @@
 # pwm
-Parameters: B_WIDTH - number of pulse width bits  for sel													
-	    B_CLK - number of frequency bits to select	
+Parameters: B_WIDTH - number of pulse width bits  for sel |													
+	    B_CLK - number of frequency bits to select |	
             PWM_POL - polarity, for control leds =1 (off)
             
 Example:
