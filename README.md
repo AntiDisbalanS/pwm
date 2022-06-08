@@ -28,3 +28,4 @@ If WIDTH_Q = 0, CLK_Q = 3 and clk = 1MHz
 	7FF 	logic 1
   
   In v4 more synchronize and error protection 
+  In v5 add generate block for create pipeline processing
