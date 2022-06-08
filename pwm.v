@@ -25,8 +25,8 @@
 */
 
 module pwm #(
-    parameter B_WIDTH = 0, //number of pulse width bits to select
-              B_CLK   = 4, //number of frequency bits to select
+    parameter B_WIDTH = 8, //number of pulse width bits to select
+              B_CLK   = 3, //number of frequency bits to select
               PWM_POL = 1)( //polarity  
     output reg                pwm,
     output                    clk_en, //for create pipeline processing
