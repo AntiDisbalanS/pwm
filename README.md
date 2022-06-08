@@ -8,7 +8,7 @@ for this project [clk/512 :  clk/65_536]
            
 Reg:        clk_count - First counter for divide clk
             clk_en_buf - Buffer for create strob
-            width_count - Second counter for divide fclk
+            width_count - Second counter for pwm
             pwm - Comparator for duty cycle | 01 - min duty cycle, FF - max duty cycle (if def parameters) 
             
 Example:
