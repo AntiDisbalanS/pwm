@@ -19,5 +19,5 @@ If B_WIDTH = 8, B_CLK = 3, PWM_POL = 0 and clk = 1MHz
 	7XX 	64
 
   
-  In v4 more synchronize and error protection 
+  In v4 more synchronize and error protection | 
   In v5 add generate block for create pipeline processing
